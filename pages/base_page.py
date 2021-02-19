@@ -1,5 +1,5 @@
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait as WDW
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage:
@@ -12,15 +12,15 @@ class BasePage:
         """Open page"""
         self.browser.get(self.url)
 
-    def element_search_on_the_page(self, locator, timeout: int = 3):
+    def element_search_on_the_page(self, locator: str, timeout: int = 3) -> WebDriverWait:
         """
-        Поиск элемента с явным ожиданием.
-        :param locator: локатор
-        :param timeout: время явного ожидания
+        Search for an element with an explicit expectation.
+        :param locator: locator
+        :param timeout: explicit waiting time
         :return: WebDriverWait
         """
-        return WDW(self.browser, timeout).until(
-            EC.presence_of_element_located(
+        return WebDriverWait(self.browser, timeout).until(
+            EC.visibility_of_element_located(
                 locator
             ), message=f">>> It is impossible to find an element locator: {locator}"
         )
