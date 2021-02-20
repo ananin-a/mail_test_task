@@ -12,13 +12,12 @@ class BasePage:
         """Open page"""
         self.browser.get(self.url)
 
-    def element_search_on_the_page(self, locator: str, timeout: int = 5) -> WebDriverWait:
+    def element_search(self, locator: str, timeout: int = 5):
         """
-        Search for an element with an explicit expectation.
+        Search for an element with an explicit expectation
 
         :param locator: locator
         :param timeout: explicit waiting time
-        :return: WebDriverWait
         """
         return WebDriverWait(self.browser, timeout).until(
             EC.visibility_of_element_located(

@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class EntryNewMessagePage:
+class EntryNewMessagePageLocators:
     """Locators in the new message pop-up window"""
     FIELD_SEND_EMAIL_TO = (By.XPATH, '//input[@tabindex="100"]')
     FIELD_SEND_COPY_EMAIL = (By.XPATH, '//input[@tabindex="200"]')
