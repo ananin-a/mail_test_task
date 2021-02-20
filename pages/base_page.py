@@ -12,9 +12,10 @@ class BasePage:
         """Open page"""
         self.browser.get(self.url)
 
-    def element_search_on_the_page(self, locator: str, timeout: int = 3) -> WebDriverWait:
+    def element_search_on_the_page(self, locator: str, timeout: int = 5) -> WebDriverWait:
         """
         Search for an element with an explicit expectation.
+
         :param locator: locator
         :param timeout: explicit waiting time
         :return: WebDriverWait
