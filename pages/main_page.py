@@ -17,10 +17,10 @@ class MainPage(BasePage):
     def click_enter_in_to_email(self):
         self.element_search(MainPageLocators.BUTTON_ENTER_IN_TO_MAIL).click()
 
-    def authorization_user(self, browser):
+    def authorization_user(self):
         self.check_page_by_name("mail")
         self.entry_user_name()
         self.click_entry_password_button()
         self.entry_user_password()
         self.click_enter_in_to_email()
-        return InboxPage(browser, browser.current_url)
+        return InboxPage(self.browser, self.browser.current_url)

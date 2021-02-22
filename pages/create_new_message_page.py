@@ -1,4 +1,5 @@
 from pages.base_page import BasePage
+from pages.message_sent_page import MessageSentPage
 from locators.create_new_message_page_locators import CreateNewMessagePageLocators as CNMP
 from constants.email_body import EmailBody
 
@@ -24,10 +25,11 @@ class CreateNewMessage(BasePage):
     def click_send_message(self):
         self.element_search(CNMP.BUTTON_SEND_MESSAGE).click()
 
-    def fill_out_and_send_a_mail(self):
+    def fill_and_send_mail(self):
         self.add_a_message_recipient()
         self.click_button_copy()
         self.add_a_copy_recipient()
         self.add_a_subject()
         self.add_a_body()
         self.click_send_message()
+        return MessageSentPage(self.browser, self.browser.current_url)
