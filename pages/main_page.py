@@ -1,22 +1,26 @@
 from pages.base_page import BasePage
-from pages.login_page import LoginPage
+from pages.inbox_page import InboxPage
 from locators.main_page_locators import MainPageLocators
+from constants.user_data import UserData
 
 
 class MainPage(BasePage):
-    """Main Page"""
+    def entry_user_name(self):
+        self.element_search(MainPageLocators.FIELD_USER_NAME).send_keys(UserData.USER_NAME)
 
-    def click_sing_in(self, browser) -> LoginPage:
-        """
-        Go to login page
+    def click_entry_password_button(self):
+        self.element_search(MainPageLocators.BUTTON_ENTRY_PASSWORD).click()
 
-        :return: LoginPage
-        """
-        self.element_search(MainPageLocators.BUTTON_LOG_IN_TO_MAIL).click()
+    def entry_user_password(self):
+        self.element_search(MainPageLocators.FIELD_USER_PASSWORD).send_keys(UserData.USER_PASSWORD)
 
-        return LoginPage(browser, browser.current_url)
+    def click_enter_in_to_email(self):
+        self.element_search(MainPageLocators.BUTTON_ENTER_IN_TO_MAIL).click()
 
-    def should_be_a_page_title(self, title):
-        text = self.element_search(MainPageLocators.BUTTON_LOG_IN_TO_MAIL).text
-        assert text == title, \
-            ">>> This is not MainPage"
+    def authorization_user(self, browser):
+        self.check_page_by_name("mail")
+        self.entry_user_name()
+        self.click_entry_password_button()
+        self.entry_user_password()
+        self.click_enter_in_to_email()
+        return InboxPage(browser, browser.current_url)
