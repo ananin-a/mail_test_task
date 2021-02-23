@@ -22,14 +22,14 @@ class BasePage:
         """
         return WebDriverWait(self.browser, timeout).until(
             EC.visibility_of_element_located(
-                locator), message=f">>> It is impossible to find an element locator: {locator}")
+                locator), message=f">>> Невозможно найт элемент по данному локатору: {locator}")
 
     def check_page_by_name(self, name_page: str, timeout: int = 5):
         """
-        Проверка на правильность нахождения на странице с не явныи ожиданием
+        Проверка на правильность нахождения с не явныи ожиданием
 
         :param name_page: String
         :param timeout: Int
         """
         self.browser.implicitly_wait(timeout)
-        assert name_page in self.browser.current_url, f">>> This is now {name_page} page"
+        assert name_page in self.browser.current_url, f">>> Вы находитесь не на той странице {name_page} page"
