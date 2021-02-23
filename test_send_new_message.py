@@ -3,6 +3,7 @@ from locators.main_page_locators import MainPageLocators
 
 
 def test_send_a_new_message(browser):
+    """Отправка нового сообщения"""
     main_page = MainPage(browser, MainPageLocators.URL)
     main_page.open()
 
