@@ -15,7 +15,7 @@ class BasePage:
 
     def element_search(self, locator: str, timeout: int = 5):
         """
-        Поиск элемента на странице с явных ожиданием
+        Поиск элемента на странице с явным ожиданием
 
         :param locator: String
         :param timeout: Int
@@ -26,7 +26,7 @@ class BasePage:
 
     def check_page_by_name(self, name_page: str, timeout: int = 5):
         """
-        Проверка на правильность нахождения с не явныи ожиданием
+        Проверка на правильность нахождения с не явным ожиданием
 
         :param name_page: String
         :param timeout: Int
